@@ -1,6 +1,7 @@
 import React from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import Layout from "../components/layout/layout"
+import "../styles/global.css"
 
 const IndexPage = () => (
   <Layout>
