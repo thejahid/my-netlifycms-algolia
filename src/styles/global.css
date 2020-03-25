@@ -6,9 +6,9 @@ body {
 .navhere {
     border-bottom: 1px solid #f1f1f1;
 }
-.navhere h1 {
+.navhere .h1 {
     font-size: 22px;
 }
-.navhere p {
+.navhere span {
     font-size: 13px;
 }

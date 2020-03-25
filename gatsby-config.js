@@ -34,6 +34,6 @@ module.exports = {
         icon: `src/images/developerjahid-icon.webp`,
       },
     },
-
+    `gatsby-plugin-netlify-cms`,
   ],
 }
