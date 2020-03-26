@@ -31,13 +31,13 @@ export default () => (
                   frontmatter {
                       title
                       path
-                      date
+                      date(formatString: "MMMM DD, YYYY")
                       image
                   }
                   id
-                  }
+                }
               }
-              }
+            }
           }        
       `}
       render={(data, count) => <Card data={data} count={count} />}
