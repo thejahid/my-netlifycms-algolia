@@ -1,3 +1,6 @@
+//for algolia config
+const queries = require('./src/utils/algolia');
+
 //dot env to hide keys
 require("dotenv").config({
   path: `.env`,
@@ -13,6 +16,8 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sass`,
+    
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -20,6 +25,17 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    //algolia plugin
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        queries,
+        chunkSize: 10000, // default: 1000
+     }
+    },
+
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -42,7 +58,9 @@ module.exports = {
         name: `blog`,
       },
     },
+    
     `gatsby-transformer-remark`,
-  
+    `gatsby-plugin-styled-components`,
+
   ],
 }
