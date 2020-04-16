@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 
 //Algolia Search Start
 import { CustomHits } from "../../../Search/searchPreview"
@@ -51,45 +51,38 @@ class Nav2 extends React.Component {
         const { refresh, hasInput } = this.state;
 
         return (
-            <div className="navhere text-center">
-                <div className="h1">Gatsby + Netlify CMS + Algolia
-                    <span> by @<a target="_blank" rel="noopener noreferrer" href="https://developerjahid.com">developerjahid</a></span>
-                </div>
-                <div className="indexform">
-                    {/* Aloglia Widgets Start */}
-                            <div className="form-inline header__search">
-                                <ClickOutHandler onClickOut={this.onClickOut}>
-                                    <InstantSearch
-                                        searchClient={searchClient}
-                                        indexName={ `${process.env.GATSBY_ALGOLIA_INDEX_NAME}` }
-                                        refresh={refresh}
-                                    >
-                                        <Configure hitsPerPage={5} />
+            <div className="fixed-top search-header d-flex justify-content-center">
+                {/* Aloglia Widgets Start */}
+                        <div className="form-inline header__search">
+                            <ClickOutHandler onClickOut={this.onClickOut}>
+                                <InstantSearch
+                                    searchClient={searchClient}
+                                    indexName={ `${process.env.GATSBY_ALGOLIA_INDEX_NAME}` }
+                                    refresh={refresh}
+                                >
+                                    <Configure hitsPerPage={5} />
 
-                                        {/* forcefeed className because component does not accept natively as prop */}
-                                        <SearchBox
-                                        className="searchbox"
-                                        class="ais-SearchBox-input"
-                                        submit={<></>}
-                                        reset={<></>}
-                                        translations={{
-                                            placeholder: 'Search Blog',
-                                        }}
-                                        onKeyUp={(event) => {
-                                            this.setState({
-                                            hasInput: event.currentTarget.value !== '',
-                                            });
-                                        }}
-                                        />
+                                    {/* forcefeed className because component does not accept natively as prop */}
+                                    <SearchBox className="searchbox" class="ais-SearchBox-input" 
+                                    submit={ <Fragment /> } 
+                                    reset={ <Fragment /> }
+                                    translations={{
+                                        placeholder: 'Gatsby + NetlifyCMS + Algolia Search :) ',
+                                    }}
+                                    onKeyUp={(event) => {
+                                        this.setState({
+                                        hasInput: event.currentTarget.value !== '',
+                                        });
+                                    }}
+                                    />
 
-                                        <div className={!hasInput ? 'input-empty' : 'input-value'}>
-                                            <CustomHits hitComponent={Hits} />
-                                        </div>
-                                    </InstantSearch>
-                                </ClickOutHandler>
-                            </div>
-                    {/* Aloglia Widgets End */}
-                </div>
+                                    <div className={!hasInput ? 'input-empty' : 'input-value'}>
+                                        <CustomHits hitComponent={Hits} />
+                                    </div>
+                                </InstantSearch>
+                            </ClickOutHandler>
+                        </div>
+                {/* Aloglia Widgets End */}
             </div>
         )
     }

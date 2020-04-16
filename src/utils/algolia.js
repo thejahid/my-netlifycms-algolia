@@ -27,4 +27,5 @@ const pageQuery = `{
       indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
       settings,
     }]
-    module.exports = queries
+
+module.exports = queries

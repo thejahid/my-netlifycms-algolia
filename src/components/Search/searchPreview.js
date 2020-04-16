@@ -1,20 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from "gatsby"
 import { Input } from "reactstrap"
 import { connectSearchBox, connectHits } from 'react-instantsearch-dom';
 import "./search.css"
 
 const SearchBox = ({ currentRefinement, refine }) => (
-  <div className="searchform ais-SearchBox">
-    <form noValidate action="" role="search" className="input-group searchbox ais-SearchBox-form">
-      <Input bsSize="sm"  placeholder="Search the Blogs"
-        className="form-control ais-SearchBox-input"
-        type="search"
-        value={currentRefinement}
-        onChange={(event) => refine(event.currentTarget.value)}
-      />
+  <Fragment>
+    <form noValidate role="search" >
+      <Input value={currentRefinement} onChange={(event) => refine(event.currentTarget.value)} />
     </form>
-  </div>
+  </Fragment>
 );
 
 export const CustomSearchBox = connectSearchBox(SearchBox);
